@@ -1,6 +1,47 @@
-﻿using LineComparision;
+﻿using System;
 
-Console.WriteLine("Welcome to Line Comparision Computation Program!");
+namespace LineComparision
+{
+    class Distance
+    {
+        public static double distance(double X1, double Y1, double X2, double Y2)
+        {
+            var temp1 = Math.Pow((X2 - X1), 2);
+            var temp2 = Math.Pow((Y2 - Y1), 2);
+            double Result = Math.Sqrt(temp1 + temp2);
+            return Result;
+        }
 
-Distance dist = new Distance();
-double Result = dist.LineDistance();
+        static void Main(string[] args)
+        {
+
+            //user input
+            Console.WriteLine("Enter the  X1 , X2 , Y1 , Y2 Coordinates of Line1 : ");
+            var X1 = Convert.ToDouble(Console.ReadLine());
+            var X2 = Convert.ToDouble(Console.ReadLine());
+            var Y1 = Convert.ToDouble(Console.ReadLine());
+            var Y2 = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter the A1 , A2 , B1 , B2 Coordinates of Line2 : ");
+            var A1 = Convert.ToDouble(Console.ReadLine());
+            var A2 = Convert.ToDouble(Console.ReadLine());
+            var B1 = Convert.ToDouble(Console.ReadLine());
+            var B2 = Convert.ToDouble(Console.ReadLine());
+
+            double Line1 = Distance.distance(X1, X2, Y1, Y2);
+            double Line2 = Distance.distance(A1, A2, B1, B2);
+            Console.WriteLine(Line1);
+            Console.WriteLine(Line2);
+
+            if (Line1 == Line2)
+            {
+                Console.WriteLine("{0} is equal to {1}", Line1, Line2);
+            }
+            else
+            {
+                Console.WriteLine("{0} is not equal to {1}", Line1, Line2);
+            }
+            Console.ReadLine();
+        }
+    }
+}
