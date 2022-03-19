@@ -9,7 +9,25 @@ namespace LineComparision
             var temp1 = Math.Pow((X2 - X1), 2);
             var temp2 = Math.Pow((Y2 - Y1), 2);
             double Result = Math.Sqrt(temp1 + temp2);
+
             return Result;
+        }
+
+        public static void CompareLines(String Len1 , String Len2)
+        {
+
+            if(Len1.CompareTo(Len2) > 0)
+            {
+                Console.WriteLine("Line1 is greater than Line2");
+            } 
+            else if(Len1.CompareTo(Len2) < 0) 
+            {
+                Console.WriteLine("Line1 is less than line2");
+            }
+            else
+            {
+                Console.WriteLine("Line1 is equal to line2");
+            }
         }
 
         static void Main(string[] args)
@@ -30,18 +48,11 @@ namespace LineComparision
 
             double Line1 = Distance.distance(X1, X2, Y1, Y2);
             double Line2 = Distance.distance(A1, A2, B1, B2);
-            Console.WriteLine(Line1);
-            Console.WriteLine(Line2);
-
-            if (Line1 == Line2)
-            {
-                Console.WriteLine("{0} is equal to {1}", Line1, Line2);
-            }
-            else
-            {
-                Console.WriteLine("{0} is not equal to {1}", Line1, Line2);
-            }
+           
+            Distance.CompareLines(Line1.ToString(), Line2.ToString());
             Console.ReadLine();
+
+           
         }
     }
 }
