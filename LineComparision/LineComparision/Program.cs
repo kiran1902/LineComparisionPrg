@@ -4,18 +4,49 @@ namespace LineComparision
 {
     class Distance
     {
-        public static double distance(double X1, double Y1, double X2, double Y2)
+        public int X1 , X2 , Y1 , Y2;  
+
+        public void LineCompare()
+        {
+            double[] Cordination = new double[5];
+            for (int i = 1; i < 2; i++)
+            {
+                Console.WriteLine("Enter coordinate X1 : ");
+                this.X1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter coordinate Y1 : ");
+                this.Y1 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter coordinate X2 : ");
+                this.X2 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter coordinate Y2 : ");
+                this.Y2 = int.Parse(Console.ReadLine());
+            }
+        }
+        public double  distance()
         {
             //formula
-            var temp1 = Math.Pow((X2 - X1), 2);
-            var temp2 = Math.Pow((Y2 - Y1), 2);
-            double Result = Math.Sqrt(temp1 + temp2);
+            double Result = Math.Sqrt(Math.Pow((X2 - X1), 2) + Math.Pow((Y2 - Y1), 2));
 
-            return Result;
+            //Round method() used for rounding decimal value up to 2 digits
+            double length = Math.Round(Result, 2);
+            return length;
         }
 
-        //logic to compare two lines
-        public static void CompareLines(String Len1 , String Len2)
+        //method to check equality of two lines 
+        public void LineEq(string line1, string line2)
+        {
+            
+            if (double.Equals(line1, line2))
+            {
+                Console.WriteLine(line1 + "is equals to" + line2);
+            }
+            else
+            {
+                Console.WriteLine(line1 + "{0} is not equal to {1}" + line2);
+            }
+        }
+
+        //Method to compare two lines
+        public void CompareLines(String Len1 , String Len2)
         {
 
             if(Len1.CompareTo(Len2) > 0)
@@ -35,26 +66,20 @@ namespace LineComparision
         static void Main(string[] args)
         {
 
-            //user input
-            Console.WriteLine("Enter the  X1 , X2 , Y1 , Y2 Coordinates of Line1 : ");
-            var X1 = Convert.ToDouble(Console.ReadLine());
-            var X2 = Convert.ToDouble(Console.ReadLine());
-            var Y1 = Convert.ToDouble(Console.ReadLine());
-            var Y2 = Convert.ToDouble(Console.ReadLine());
+            Distance distance = new Distance();
+            double line1 = distance.distance();
 
-            Console.WriteLine("Enter the A1 , A2 , B1 , B2 Coordinates of Line2 : ");
-            var A1 = Convert.ToDouble(Console.ReadLine());
-            var A2 = Convert.ToDouble(Console.ReadLine());
-            var B1 = Convert.ToDouble(Console.ReadLine());
-            var B2 = Convert.ToDouble(Console.ReadLine());
+            Distance obj2 = new Distance();
+            double line2 = obj2.distance();
 
-            //storing X & Y , A & B variable in Line1 and Line2
-            double Line1 = Distance.distance(X1, X2, Y1, Y2);
-            double Line2 = Distance.distance(A1, A2, B1, B2);
-           
-            //compare method
-            Distance.CompareLines(Line1.ToString(), Line2.ToString());
+            Console.WriteLine("Length of the first line " + line1);
+            Console.WriteLine("Length of the secod line " + line2);
+            
+            distance.LineEq(line1.ToString(), line2.ToString());
+
+            distance.CompareLines(line1.ToString(), line2.ToString());
             Console.ReadLine();
+;
 
            
         }
