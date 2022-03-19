@@ -6,6 +6,7 @@ namespace LineComparision
     {
         public static double distance(double X1, double Y1, double X2, double Y2)
         {
+            //formula
             var temp1 = Math.Pow((X2 - X1), 2);
             var temp2 = Math.Pow((Y2 - Y1), 2);
             double Result = Math.Sqrt(temp1 + temp2);
@@ -13,6 +14,7 @@ namespace LineComparision
             return Result;
         }
 
+        //logic to compare two lines
         public static void CompareLines(String Len1 , String Len2)
         {
 
@@ -46,9 +48,11 @@ namespace LineComparision
             var B1 = Convert.ToDouble(Console.ReadLine());
             var B2 = Convert.ToDouble(Console.ReadLine());
 
+            //storing X & Y , A & B variable in Line1 and Line2
             double Line1 = Distance.distance(X1, X2, Y1, Y2);
             double Line2 = Distance.distance(A1, A2, B1, B2);
            
+            //compare method
             Distance.CompareLines(Line1.ToString(), Line2.ToString());
             Console.ReadLine();
 
